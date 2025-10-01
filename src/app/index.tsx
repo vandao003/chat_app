@@ -1,3 +1,7 @@
+// This is a fallback file required by Metro bundler
+// The actual implementations are in index.ios.tsx and index.android.tsx
+// Metro will automatically use the platform-specific version when building
+
 import React, { useState } from 'react'
 import { Image, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -21,7 +25,7 @@ const index = (props: Props) => {
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={{ flex: 1 }}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
+        keyboardVerticalOffset={0}
       >
         <ScrollView
           contentContainerStyle={{ flexGrow: 1 }}
@@ -41,7 +45,7 @@ const index = (props: Props) => {
                   className='w-32 h-32'
                   style={{ marginBottom: 16 }}
                 />
-                <Text className='text-white text-3xl font-bold'>Welcome Back</Text>
+                <Text className='text-white text-3xl font-bold'>Welcome</Text>
                 <Text className='text-gray-400 text-base mt-2'>Sign in to continue</Text>
               </View>
 
