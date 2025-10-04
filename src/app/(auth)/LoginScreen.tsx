@@ -1,23 +1,26 @@
 // This is a fallback file required by Metro bundler
-// The actual implementations are in LoginScreen.ios.tsx and LoginScreen.android.tsx
+// The actual implementations are in index.ios.tsx and index.android.tsx
 // Metro will automatically use the platform-specific version when building
 
+import { router, useLocalSearchParams } from 'expo-router'
 import React, { useState } from 'react'
 import { Image, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 type Props = {}
 
-const LoginScreen = (props: Props) => {
+const index = (props: Props) => { 
     const [ username, setUsername ] = useState('')
     const [ phone, setPhone ] = useState('')
     const [ password, setPassword ] = useState('')
+    const { id } = useLocalSearchParams()
 
     const handleLogin = () => {
         Keyboard.dismiss()
         console.log('Login:', { username, phone, password })
-        // Add your login logic here
+        router.push('/(main)/two')
     }
+    const logo = Platform.OS === 'ios' ? require('@assets/images/logo.png') : require('@assets/images/logo.png')
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#000' }}>
@@ -39,13 +42,13 @@ const LoginScreen = (props: Props) => {
                     >
                         <View className='flex-1 items-center justify-center px-6 py-8'>
                             {/* Logo */}
-                            <View className='items-center mb-10'>
+                            <View className='items-center'>
                                 <Image
-                                    source={require('../../assets/images/logo.png')}
+                                    source={logo}
                                     className='w-32 h-32'
                                     style={{ marginBottom: 16 }}
                                 />
-                                <Text className='text-white text-3xl font-bold'>Welcome</Text>
+                                <Text className='text-white text-3xl font-bold'>Welcome {Platform.OS === 'ios' ? 'iOS' : 'Android'}</Text>
                                 <Text className='text-gray-400 text-base mt-2'>Sign in to continue</Text>
                             </View>
 
@@ -139,7 +142,7 @@ const LoginScreen = (props: Props) => {
     )
 }
 
-export default LoginScreen
+export default index
 
 const styles = StyleSheet.create({
     input: {
