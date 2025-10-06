@@ -120,7 +120,7 @@ const index = (props: Props) => {
                                 {/* Sign Up Link */}
                                 <View className='flex-row justify-center mt-2'>
                                     <Text className='text-gray-400 text-sm'>Don't have an account? </Text>
-                                    <TouchableOpacity activeOpacity={0.7} onPress={() => router.push('/Register')}>
+                                    <TouchableOpacity activeOpacity={0.7} onPress={() => router.replace('/Register')}>
                                         <Text className='text-blue-400 text-sm font-medium'>Sign Up</Text>
                                     </TouchableOpacity>
                                 </View>
