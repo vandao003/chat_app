@@ -14,11 +14,11 @@ export default function Index() {
 
         if (token) {
         } else {
-          router.replace("/(auth)/LoginScreen");
+          router.replace("/LoginScreen");
         }
       } catch (e) {
         console.log("Error checking token:", e);
-        router.replace("/(auth)/LoginScreen");
+        router.replace("/LoginScreen");
       } finally {
         setLoading(false);
       }
@@ -29,7 +29,7 @@ export default function Index() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View className="flex-1 items-center justify-center">
         <ActivityIndicator size="large" />
       </View>
     );
